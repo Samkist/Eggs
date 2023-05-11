@@ -1,13 +1,13 @@
 {
-    "_comment": "Easy Limbo Server",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-05-11T08:30:19+00:00",
+    "exported_at": "2023-05-11T08:35:34+00:00",
     "name": "Limbo",
     "author": "sam@lumae.net",
-    "description": "High performance Limbo Server.",
+    "description": "High performance Nano Limbo Server.",
     "features": [
         "eula",
         "java_version",
@@ -29,7 +29,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/ash\r\n# Limbo Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\nif [ -n \"${DL_PATH}\" ]; then\r\n\techo -e \"Using supplied download url: ${DL_PATH}\"\r\n\tDOWNLOAD_URL=`eval echo $(echo ${DL_PATH} | sed -e 's\/{{\/${\/g' -e 's\/}}\/}\/g')`\r\nelse\r\n\tDOWNLOAD_URL=`curl -s https:\/\/api.github.com\/repos\/Nan1t\/NanoLimbo\/releases\/latest | grep \"browser_download_url.*jar\" | cut -d : -f 2,3 | tr -d \\\" | xargs`\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\necho -e \"Running curl -LO ${SERVER_JARFILE} ${DOWNLOAD_URL}\"\r\n\r\nif [ -f ${SERVER_JARFILE} ]; then\r\n\tmv ${SERVER_JARFILE} ${SERVER_JARFILE}.old\r\nfi\r\n\r\ncurl -Lo ${SERVER_JARFILE} ${DOWNLOAD_URL}",
+            "script": "#!\/bin\/ash\r\n# Limbo Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\nif [ -n \"${DL_PATH}\" ]; then\r\n\techo -e \"Using supplied download url: ${DL_PATH}\"\r\n\tDOWNLOAD_URL=`eval echo $(echo ${DL_PATH} | sed -e 's\/{{\/${\/g' -e 's\/}}\/}\/g')`\r\nelse\r\n\tDOWNLOAD_URL=`curl -s https:\/\/api.github.com\/repos\/Nan1t\/NanoLimbo\/releases\/latest | grep \"browser_download_url.*jar\" | cut -d : -f 2,3 | tr -d \\\" | xargs`\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\necho -e \"Running curl -LO ${SERVER_JARFILE} ${DOWNLOAD_URL}\"\r\n\r\nif [ -f ${SERVER_JARFILE} ]; then\r\n\tmv ${SERVER_JARFILE} ${SERVER_JARFILE}.old\r\nfi\r\n\r\ncurl -Lo ${SERVER_JARFILE} ${DOWNLOAD_URL}\r\n\r\nif [ ! -f settings.yml ]; then\r\n    echo -e \"Downloading settings.yml\"\r\n    curl -o settings.yml https:\/\/raw.githubusercontent.com\/Samkist\/Eggs\/master\/game_eggs\/minecraft\/limbo\/settings.yml\r\nfi",
             "container": "ghcr.io\/pterodactyl\/installers:alpine",
             "entrypoint": "ash"
         }
